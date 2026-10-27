@@ -1,7 +1,11 @@
 # HDL Labs
 
 This is my modified version of the HDL labs from Olin College of Engineering
-ENGR3410. The code was originally written by Avinash Uttamchandani for ENGR3410
+ENGR3410. I took this course at Olin in 2022 and TAed this course in 2023 before
+I transferred to UMass Amherst. The template for this is from the 2023 rendition
+of the course.
+
+The code was originally written by Avinash Uttamchandani for ENGR3410
 (an embedded approach to the Harris and Harris Digital Design and Computer
 Architecture text). Original MIT licensed repo:
 https://github.com/avinash-nonholonomy/olin-cafe-f23
