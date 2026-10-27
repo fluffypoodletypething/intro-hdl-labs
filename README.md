@@ -7,7 +7,8 @@ Architecture text). Original MIT licensed repo:
 https://github.com/avinash-nonholonomy/olin-cafe-f23
 
 This has the same HDL labs, but FPGA stuff will be replaced by the ULX3S
-open-source FPGA board.
+open-source FPGA board and the open-source toolchain instead the Digilent CMOD
+A7 board and Xilinx Vivado.
 
 # Getting Started
 
