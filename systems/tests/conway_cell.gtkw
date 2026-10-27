@@ -1,0 +1,30 @@
+[*]
+[*] GTKWave Analyzer v3.3.111 (w)1999-2020 BSI
+[*] Tue Nov  7 19:28:56 2023
+[*]
+[dumpfile] "/home/avinash/src/olin-cafe-f23/systems/conway_cell.fst"
+[dumpfile_mtime] "Tue Nov  7 19:28:23 2023"
+[dumpfile_size] 1238
+[savefile] "/home/avinash/src/olin-cafe-f23/systems/tests/conway_cell.gtkw"
+[timestart] 0
+[size] 849 1334
+[pos] -27 -24
+*-15.642819 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] test_conway_cell.
+[sst_width] 234
+[signals_width] 114
+[sst_expanded] 1
+[sst_vpaned_height] 413
+@28
+test_conway_cell.UUT.clk
+test_conway_cell.UUT.ena
+test_conway_cell.UUT.rst
+@22
+test_conway_cell.UUT.neighbors[7:0]
+@28
+test_conway_cell.UUT.state_0
+test_conway_cell.UUT.state_d
+@29
+test_conway_cell.UUT.state_q
+[pattern_trace] 1
+[pattern_trace] 0

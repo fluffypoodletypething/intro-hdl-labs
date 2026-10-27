@@ -1,0 +1,87 @@
+[*]
+[*] GTKWave Analyzer v3.3.111 (w)1999-2020 BSI
+[*] Tue Nov 28 19:11:29 2023
+[*]
+[dumpfile] "/home/avinash/src/cafe-instructors/components/rv32_simulator.fst"
+[dumpfile_mtime] "Tue Nov 28 19:04:55 2023"
+[dumpfile_size] 22289
+[savefile] "/home/avinash/src/cafe-instructors/components/tests/rv32.gtkw"
+[timestart] 0
+[size] 2556 1334
+[pos] -1 -1
+*-11.390253 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] rv32_simulator.
+[sst_width] 234
+[signals_width] 342
+[sst_expanded] 1
+[sst_vpaned_height] 413
+@28
+rv32_simulator.CORE.clk
+rv32_simulator.CORE.ena
+rv32_simulator.CORE.rst
+@200
+-PC and Current Instruction
+@22
+rv32_simulator.CORE.state[3:0]
+@28
+rv32_simulator.CORE.PC_ena
+@22
+rv32_simulator.CORE.PC[31:0]
+rv32_simulator.CORE.IR[31:0]
+@c04023
+^>1 /home/avinash/src/cafe-instructors/tools/gtkwave_filter.py
+rv32_simulator.CORE.IR[31:0]
+@29
+(0)rv32_simulator.CORE.IR[31:0]
+(1)rv32_simulator.CORE.IR[31:0]
+(2)rv32_simulator.CORE.IR[31:0]
+(3)rv32_simulator.CORE.IR[31:0]
+(4)rv32_simulator.CORE.IR[31:0]
+(5)rv32_simulator.CORE.IR[31:0]
+(6)rv32_simulator.CORE.IR[31:0]
+(7)rv32_simulator.CORE.IR[31:0]
+(8)rv32_simulator.CORE.IR[31:0]
+(9)rv32_simulator.CORE.IR[31:0]
+(10)rv32_simulator.CORE.IR[31:0]
+(11)rv32_simulator.CORE.IR[31:0]
+(12)rv32_simulator.CORE.IR[31:0]
+(13)rv32_simulator.CORE.IR[31:0]
+(14)rv32_simulator.CORE.IR[31:0]
+(15)rv32_simulator.CORE.IR[31:0]
+(16)rv32_simulator.CORE.IR[31:0]
+(17)rv32_simulator.CORE.IR[31:0]
+(18)rv32_simulator.CORE.IR[31:0]
+(19)rv32_simulator.CORE.IR[31:0]
+(20)rv32_simulator.CORE.IR[31:0]
+(21)rv32_simulator.CORE.IR[31:0]
+(22)rv32_simulator.CORE.IR[31:0]
+(23)rv32_simulator.CORE.IR[31:0]
+(24)rv32_simulator.CORE.IR[31:0]
+(25)rv32_simulator.CORE.IR[31:0]
+(26)rv32_simulator.CORE.IR[31:0]
+(27)rv32_simulator.CORE.IR[31:0]
+(28)rv32_simulator.CORE.IR[31:0]
+(29)rv32_simulator.CORE.IR[31:0]
+(30)rv32_simulator.CORE.IR[31:0]
+(31)rv32_simulator.CORE.IR[31:0]
+@1401201
+-group_end
+@200
+-Memory Interface
+@28
+rv32_simulator.CORE.mem_access[1:0]
+@22
+rv32_simulator.CORE.mem_addr[31:0]
+@28
+rv32_simulator.CORE.mem_data_ena
+@22
+rv32_simulator.CORE.mem_data[31:0]
+rv32_simulator.CORE.mem_rd_data[31:0]
+@28
+rv32_simulator.CORE.mem_src
+@22
+rv32_simulator.CORE.mem_wr_data[31:0]
+@28
+rv32_simulator.CORE.mem_wr_ena
+[pattern_trace] 1
+[pattern_trace] 0

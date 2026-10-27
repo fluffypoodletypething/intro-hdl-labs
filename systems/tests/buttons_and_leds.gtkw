@@ -1,0 +1,32 @@
+[*]
+[*] GTKWave Analyzer v3.3.111 (w)1999-2020 BSI
+[*] Thu Sep 28 18:43:36 2023
+[*]
+[dumpfile] "/home/avinash/src/olin-cafe-f23/systems/buttons_and_leds.fst"
+[dumpfile_mtime] "Thu Sep 28 18:42:59 2023"
+[dumpfile_size] 2450
+[savefile] "/home/avinash/src/olin-cafe-f23/systems/tests/buttons_and_leds.gtkw"
+[timestart] 0
+[size] 849 1334
+[pos] -27 -24
+*-26.084051 51200000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] test_buttons_and_leds.
+[sst_width] 234
+[signals_width] 198
+[sst_expanded] 1
+[sst_vpaned_height] 413
+@420
+test_buttons_and_leds.UUT.OFF_COLOR
+test_buttons_and_leds.UUT.ON_COLOR
+@28
+test_buttons_and_leds.UUT.rst
+@29
+test_buttons_and_leds.UUT.clk
+@28
+test_buttons_and_leds.UUT.button_pressed
+test_buttons_and_leds.UUT.buttons[1:0]
+test_buttons_and_leds.UUT.leds[1:0]
+test_buttons_and_leds.UUT.q
+test_buttons_and_leds.UUT.rgb[2:0]
+[pattern_trace] 1
+[pattern_trace] 0
