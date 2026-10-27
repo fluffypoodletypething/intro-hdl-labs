@@ -1,3 +1,7 @@
+# TODO
+
+Migrate Synthesis portions to Yosys and ULX3S
+
 # HDL Labs
 
 This is my modified version of the HDL labs from Olin College of Engineering

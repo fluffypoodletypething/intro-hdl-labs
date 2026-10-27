@@ -6,8 +6,9 @@ wire sum, c_out;
 adder_1 UUT(.a(a), .b(b), .c_in(c_in), .sum(sum), .c_out(c_out));
 
 initial begin
-  $dumpvars(0, UUT);
   $dumpfile("adder_1.fst");
+  $dumpvars(0, UUT);
+  
 
   $display("abc | sc");
   for (int i = 0; i < 8; i = i + 1) begin

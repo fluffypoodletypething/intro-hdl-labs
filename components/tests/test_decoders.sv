@@ -30,7 +30,7 @@ module test_decoders;
     // Test with enable first. 
     ena = 1;
     $display("~~~ only one output should be high per decoder ~~~");
-    $display("%4s %5s | 0x%08h 0x%08h 0x%08h 0x%08h 0x%08h", "ena", "in", "1:2", "2:4", "3:8", "4:16", "5:32");
+    $display("%9s %8s | %10s %10s %10s %10s %10s", "ena", "in", "1:2", "2:4", "3:8", "4:16", "5:32");
     for (int i = 0; i < 32; i = i + 1) begin
       in = i[4:0];
       #10;
