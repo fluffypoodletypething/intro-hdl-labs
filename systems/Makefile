@@ -3,30 +3,65 @@ IVERILOG=iverilog -g2012 -Wall -Wno-sensitivity-entire-vector -Wno-sensitivity-e
 VVP=vvp
 VVP_POST=-fst
 WAVES=gtkwave
+
+# Vivado is still used by conway_system and uart_hello_world until they are migrated.
 VIVADO=vivado -mode batch -source
 
-.PHONY: clean
+# Open-source ECP5 flow (buttons_and_leds for now).
+YOSYS ?= yosys
+NEXTPNR ?= nextpnr-ecp5
+ECPPACK ?= ecppack
+FUJPROG ?= fujprog
+
+# nextpnr-ecp5 device options. FPGA_SIZE uses nextpnr's 12k/25k/45k/85k names.
+FPGA_SIZE ?= 85k
+FPGA_SEED ?= 1
+FPGA_PACKAGE = CABGA381
+FPGA_FREQ = 25
+FPGA_SPEED = 6
+
+# Board constraints. Set FPGA_LPF= to let nextpnr place unconstrained IO.
+FPGA_LPF ?= buttons_and_leds/buttons_and_leds.lpf
+NEXTPNR_LPF_FLAGS = $(if $(FPGA_LPF),--lpf $(FPGA_LPF),--lpf-allow-unconstrained)
+
+VALID_FPGA_SIZES := 12k 25k 45k 85k
+ifeq ($(filter $(FPGA_SIZE),$(VALID_FPGA_SIZES)),)
+  $(error FPGA_SIZE must be one of: $(VALID_FPGA_SIZES))
+endif
+
+.PHONY: clean FORCE program_buttons_and_leds program_flash_buttons_and_leds
 
 clean:
-	rm -f *.bin *.vcd vivado*.log vivado*.jou vivado*.str *.fst *.bit *.log *.checkpoint
+	rm -f *.bin *.vcd vivado*.log vivado*.jou vivado*.str *.fst *.bit *.json *.config *.svf *.log *.checkpoint
+
+# Force nextpnr to rerun when FPGA_* variables change; Make does not track variable values.
+FORCE:
 
 ################################################################
 ## Buttons and LEDs
 ################################################################
 # Use the line with the component modules in them once you start part 3 of this exercise.
-# BUTTONS_AND_LEDS_HDL=$(addprefix ../components/, edge_detector.sv debouncer.sv) buttons_and_leds/buttons_and_leds.sv
 BUTTONS_AND_LEDS_HDL=buttons_and_leds/buttons_and_leds.sv
+# BUTTONS_AND_LEDS_HDL=$(addprefix ../components/, edge_detector.sv debouncer.sv) buttons_and_leds/buttons_and_leds.sv
+BUTTONS_AND_LEDS_TOP=buttons_and_leds
 
 test_buttons_and_leds : tests/test_buttons_and_leds.sv ${BUTTONS_AND_LEDS_HDL}
 	${IVERILOG} tests/test_buttons_and_leds.sv ${BUTTONS_AND_LEDS_HDL} -o $@.bin && ${VVP} $@.bin ${VVP_POST}
 waves_buttons_and_leds : test_buttons_and_leds
 	${WAVES} -a tests/buttons_and_leds.gtkw buttons_and_leds.fst
 
-buttons_and_leds.bit: ${BUTTONS_AND_LEDS_HDL} buttons_and_leds/buttons_and_leds.xdc
-	SYNTH_HDL_SOURCES="${BUTTONS_AND_LEDS_HDL}" SYNTH_XDC_FILE=buttons_and_leds/buttons_and_leds.xdc SYNTH_TOP_MODULE=buttons_and_leds ${VIVADO} build.tcl
+buttons_and_leds.json: ${BUTTONS_AND_LEDS_HDL}
+	$(YOSYS) -p "read_verilog -sv ${BUTTONS_AND_LEDS_HDL}; synth_ecp5 -top ${BUTTONS_AND_LEDS_TOP} -json $@"
 
-program_buttons_and_leds: buttons_and_leds.bit
-	SYNTH_BITSTREAM=buttons_and_leds.bit ${VIVADO} program.tcl
+buttons_and_leds.config: buttons_and_leds.json $(FPGA_LPF) FORCE
+	$(NEXTPNR) --$(FPGA_SIZE) --package $(FPGA_PACKAGE) \
+		--json $< --textcfg $@ \
+		--freq $(FPGA_FREQ) --speed $(FPGA_SPEED) --seed $(FPGA_SEED) \
+		$(NEXTPNR_LPF_FLAGS)
+
+buttons_and_leds.bit: buttons_and_leds.config
+	$(ECPPACK) --compress $< $@
+
 
 ################################################################
 ## Conway's Game of Life
