@@ -209,6 +209,11 @@ value, then counts down linearly.
 Idealy, it does not stay at the max or min value for more than 1 cycle; use
 waves to double check that you implemented your state machine correctly for this behavior.
 
+# PWM
+
+Make a module that takes in an N bit input and has a 1 bit output. The output
+should be high for the duty cycle corresponding to the input.
+
 # Register File
 
 A CPU has a "register file," which is a collection of general purpose registers.
