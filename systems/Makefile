@@ -2,7 +2,7 @@ SHELL:=/bin/bash
 IVERILOG=iverilog -g2012 -Wall -Wno-sensitivity-entire-vector -Wno-sensitivity-entire-array -y./ -y../components -y./tests -Y.sv -I../components
 VVP=vvp
 VVP_POST=-fst
-WAVES=gtkwave --rcvar 'fontname_signals Monospace 20' --rcvar 'fontname_waves Monospace 20'
+WAVES=gtkwave
 VIVADO=vivado -mode batch -source
 
 .PHONY: clean
