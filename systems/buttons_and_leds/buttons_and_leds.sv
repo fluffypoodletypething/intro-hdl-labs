@@ -1,48 +1,58 @@
 `default_nettype none
 
-module buttons_and_leds(clk, buttons, rgb, leds);
 
-parameter ON_COLOR=3'b001;
-parameter OFF_COLOR=3'b100;
+module buttons_and_leds(/*AUTOARG*/
+   // Outputs
+   leds,
+   // Inputs
+   clk, buttons
+   );
+   input wire clk;
+   input  wire [6:0] buttons; // buttons[0]: power; buttons[1..2]: fire; buttons[3..6]: "dpad"
+   output logic [7:0] leds;
 
-input wire clk;
-input wire [1:0] buttons;
-output reg [2:0] rgb;
-output reg [1:0] leds;
+   // Power button is reset signal
+   logic rst;
+   always_comb rst = ~buttons[0]; // This has a pull up so it is normally high, thus we invert
 
-// Create a reset signal from one of the buttons.
-logic rst; always_comb rst = buttons[0];
+   always_comb begin
+      // Assign each button an LED
+      leds[5:0] = buttons[6:1];
+   end
 
-// Example of using combinational logic to drive outputs.
-// Question: Why are we using inverting gates here? Hint: check the schematic!
-always_comb begin : basic_gates
-  leds[0] = ~(buttons[0] & buttons[1]);
-  leds[1] = ~(buttons[0] | buttons[1]);
-end
+   logic button_pressed;
+   // This signal is the or of all buttons
+   always_comb button_pressed = |buttons[6:1]; // Exclude buttons[0] as that resets
 
-logic button_pressed;
+   // Sequential logic example: an edge detector, on edge, toggle_led_state flips
+   logic toggle_led_state;
+   logic prev_button_pressed; // Value of button pressed on last clock
+   logic button_pressed_posedge; // Combinational signal
 
-// Example of some simple "sequential logic" to create a tap on/tap off LED.
-// Note: there's an issue with this! It shouldn't work very reliably.
-always_comb button_pressed = buttons[1];
+   // Edge detector: look at the last value of a signal and the current value,
+   // if last is low and current is high we have a posedge
 
+   // TODO: Think about how you can modify this to debounce the input more effectively.
+   always_comb button_pressed_posedge = ~prev_button_pressed & button_pressed;
 
-// Using always_ff to create a flip flop with synchronous reset.
-logic q; // State that will drive our LED.
-always_ff @(posedge clk) begin
-  if(rst) begin
-    q <= 0;
-  end else begin
-    // If button[1] is "pressed" toggle q.
-    if(button_pressed) begin
-      q <= ~q; // This sneaks some combinational logic into our always_ff statement. 
-    end
-  end
-end
+   always_ff @(posedge clk) begin
+      if(rst) begin
+         toggle_led_state <= 0;
+         prev_button_pressed <= 0;
+      end else begin
+         // Store previous value
+         prev_button_pressed <= button_pressed;
 
-always_comb begin : led_driving
-  rgb = q ? ON_COLOR : OFF_COLOR;
-end
+         // Toggle if an edge
+         if(button_pressed_posedge) begin
+            toggle_led_state <= ~toggle_led_state;
+         end
+      end
+   end // always_ff @ (posedge clk)
 
-
+   // Lastly, drive leds 6 and 7
+   always_comb begin
+      leds[6] = toggle_led_state;
+      leds[7] = ~toggle_led_state;
+   end
 endmodule

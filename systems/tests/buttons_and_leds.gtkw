@@ -1,32 +1,37 @@
 [*]
-[*] GTKWave Analyzer v3.3.111 (w)1999-2020 BSI
-[*] Thu Sep 28 18:43:36 2023
+[*] GTKWave Analyzer v4.0.0-prealpha (f6d60e0) (w)1999-2022 BSI
+[*] Wed Oct 28 03:43:17 2026
 [*]
-[dumpfile] "/home/avinash/src/olin-cafe-f23/systems/buttons_and_leds.fst"
-[dumpfile_mtime] "Thu Sep 28 18:42:59 2023"
-[dumpfile_size] 2450
-[savefile] "/home/avinash/src/olin-cafe-f23/systems/tests/buttons_and_leds.gtkw"
-[timestart] 0
-[size] 849 1334
-[pos] -27 -24
-*-26.084051 51200000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[dumpfile] "/home/rose/Projects/intro-hdl-labs/systems/buttons_and_leds.fst"
+[dumpfile_mtime] "Wed Oct 28 03:40:42 2026"
+[dumpfile_size] 2458
+[savefile] "/home/rose/Projects/intro-hdl-labs/systems/tests/buttons_and_leds.gtkw"
+[timestart] 9430000
+[size] 2032 1195
+[pos] -7 -4
+*-23.084051 43250000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] test_buttons_and_leds.
-[sst_width] 234
+[sst_width] 297
 [signals_width] 198
 [sst_expanded] 1
-[sst_vpaned_height] 413
-@420
-test_buttons_and_leds.UUT.OFF_COLOR
-test_buttons_and_leds.UUT.ON_COLOR
+[sst_vpaned_height] 364
+@200
+-Inputs
 @28
-test_buttons_and_leds.UUT.rst
+test_buttons_and_leds.DUT.clk
+test_buttons_and_leds.DUT.buttons[6:0]
+@200
+-Outputs
+@28
+test_buttons_and_leds.DUT.leds[7:0]
+@200
+-Internal
 @29
-test_buttons_and_leds.UUT.clk
+test_buttons_and_leds.DUT.rst
 @28
-test_buttons_and_leds.UUT.button_pressed
-test_buttons_and_leds.UUT.buttons[1:0]
-test_buttons_and_leds.UUT.leds[1:0]
-test_buttons_and_leds.UUT.q
-test_buttons_and_leds.UUT.rgb[2:0]
+test_buttons_and_leds.DUT.button_pressed
+test_buttons_and_leds.DUT.button_pressed_posedge
+test_buttons_and_leds.DUT.prev_button_pressed
+test_buttons_and_leds.DUT.toggle_led_state
 [pattern_trace] 1
 [pattern_trace] 0
