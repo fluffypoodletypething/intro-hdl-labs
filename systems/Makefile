@@ -20,6 +20,7 @@ FPGA_PACKAGE = CABGA381
 FPGA_FREQ = 25
 FPGA_SPEED = 6
 
+# FIXME: This is sloppy; it needs to be different for every system
 # Board constraints. Set FPGA_LPF= to let nextpnr place unconstrained IO.
 FPGA_LPF ?= buttons_and_leds/buttons_and_leds.lpf
 NEXTPNR_LPF_FLAGS = $(if $(FPGA_LPF),--lpf $(FPGA_LPF),--lpf-allow-unconstrained)
