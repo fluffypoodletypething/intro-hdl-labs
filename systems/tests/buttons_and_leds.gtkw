@@ -1,15 +1,15 @@
 [*]
 [*] GTKWave Analyzer v4.0.0-prealpha (f6d60e0) (w)1999-2022 BSI
-[*] Wed Oct 28 03:43:17 2026
+[*] Wed Oct 28 04:33:20 2026
 [*]
 [dumpfile] "/home/rose/Projects/intro-hdl-labs/systems/buttons_and_leds.fst"
-[dumpfile_mtime] "Wed Oct 28 03:40:42 2026"
-[dumpfile_size] 2458
+[dumpfile_mtime] "Wed Oct 28 04:32:59 2026"
+[dumpfile_size] 2400
 [savefile] "/home/rose/Projects/intro-hdl-labs/systems/tests/buttons_and_leds.gtkw"
 [timestart] 9430000
 [size] 2032 1195
 [pos] -7 -4
-*-23.084051 43250000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+*-23.084051 18580000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] test_buttons_and_leds.
 [sst_width] 297
 [signals_width] 198
@@ -22,16 +22,23 @@ test_buttons_and_leds.DUT.clk
 test_buttons_and_leds.DUT.buttons[6:0]
 @200
 -Outputs
-@28
+@800028
 test_buttons_and_leds.DUT.leds[7:0]
+@28
+(0)test_buttons_and_leds.DUT.leds[7:0]
+(1)test_buttons_and_leds.DUT.leds[7:0]
+(2)test_buttons_and_leds.DUT.leds[7:0]
+(3)test_buttons_and_leds.DUT.leds[7:0]
+(4)test_buttons_and_leds.DUT.leds[7:0]
+(5)test_buttons_and_leds.DUT.leds[7:0]
+(6)test_buttons_and_leds.DUT.leds[7:0]
+(7)test_buttons_and_leds.DUT.leds[7:0]
+@1001200
+-group_end
 @200
 -Internal
-@29
-test_buttons_and_leds.DUT.rst
 @28
+test_buttons_and_leds.DUT.rst
 test_buttons_and_leds.DUT.button_pressed
-test_buttons_and_leds.DUT.button_pressed_posedge
-test_buttons_and_leds.DUT.prev_button_pressed
-test_buttons_and_leds.DUT.toggle_led_state
 [pattern_trace] 1
 [pattern_trace] 0
