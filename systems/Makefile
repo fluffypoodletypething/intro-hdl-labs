@@ -30,7 +30,7 @@ ifeq ($(filter $(FPGA_SIZE),$(VALID_FPGA_SIZES)),)
   $(error FPGA_SIZE must be one of: $(VALID_FPGA_SIZES))
 endif
 
-.PHONY: clean FORCE program_buttons_and_leds program_flash_buttons_and_leds
+.PHONY: clean FORCE
 
 clean:
 	rm -f *.bin *.vcd vivado*.log vivado*.jou vivado*.str *.fst *.bit *.json *.config *.svf *.log *.checkpoint
@@ -64,7 +64,7 @@ buttons_and_leds.config: buttons_and_leds.json $(FPGA_LPF) FORCE
 buttons_and_leds.bit: buttons_and_leds.config
 	$(ECPPACK) --compress $< $@
 
-prog_buttons_and_leds: buttons_and_leds.bit
+program_buttons_and_leds: buttons_and_leds.bit
 	${FUJPROG} $^
 
 ################################################################
