@@ -46,9 +46,10 @@ BUTTONS_AND_LEDS_HDL=buttons_and_leds/buttons_and_leds.sv
 # BUTTONS_AND_LEDS_HDL=$(addprefix ../components/, edge_detector.sv debouncer.sv) buttons_and_leds/buttons_and_leds.sv
 BUTTONS_AND_LEDS_TOP=buttons_and_leds
 
-test_buttons_and_leds : tests/test_buttons_and_leds.sv ${BUTTONS_AND_LEDS_HDL}
+test_buttons_and_leds: tests/test_buttons_and_leds.sv ${BUTTONS_AND_LEDS_HDL}
 	${IVERILOG} tests/test_buttons_and_leds.sv ${BUTTONS_AND_LEDS_HDL} -o $@.bin && ${VVP} $@.bin ${VVP_POST}
-waves_buttons_and_leds : test_buttons_and_leds
+
+waves_buttons_and_leds: test_buttons_and_leds
 	${WAVES} -a tests/buttons_and_leds.gtkw buttons_and_leds.fst
 
 buttons_and_leds.json: ${BUTTONS_AND_LEDS_HDL}
@@ -63,6 +64,8 @@ buttons_and_leds.config: buttons_and_leds.json $(FPGA_LPF) FORCE
 buttons_and_leds.bit: buttons_and_leds.config
 	$(ECPPACK) --compress $< $@
 
+prog_buttons_and_leds: buttons_and_leds.bit
+	${FUJPROG} $^
 
 ################################################################
 ## Conway's Game of Life
